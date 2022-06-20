@@ -1,0 +1,28 @@
+/// Calculate frequency of every element in array using HashTable
+
+
+
+static void Main(string[] args)
+        {
+            int[] array = new int[]{9,9,9,50,50,89,67,67,67,67};
+            Hashtable hash = new Hashtable();
+            int count = 1;
+            foreach (var item in array)
+            {
+
+                if (!hash.ContainsKey(item))
+                {
+                    count =1;
+                    hash.Add(item,count);
+                }
+                else{
+                    count++;
+                    hash[item] = count;
+                }
+            }
+
+            foreach (DictionaryEntry item in hash)
+            {
+                System.Console.WriteLine("Key {0} Value {1}",item.Key,item.Value);
+            }
+        }
