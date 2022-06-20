@@ -1,0 +1,33 @@
+///most repeated element in an array
+
+
+static void Main(string[] args)
+        {
+            int[] array = new int[]{1, 2, 2, 3, 3, 3, 4};
+            Dictionary<int,int> hash = new Dictionary<int, int>(); 
+            int count = 1;
+            foreach (var item in array)
+            {
+
+                if (!hash.ContainsKey(item))
+                {
+                    count =1;
+                    hash.Add(item,count);
+                }
+                else{
+                    count++;
+                    hash[item] = count;
+                }
+            }
+
+            int max = 0;
+            int result = 0;
+            foreach (KeyValuePair<int,int> pair in hash)
+            {
+                if(max <= pair.Value){
+                    max = pair.Value;
+                    result = pair.Key;
+                }
+            }
+            System.Console.WriteLine(result);
+        }
