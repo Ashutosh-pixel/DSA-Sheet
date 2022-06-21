@@ -1,0 +1,27 @@
+///Find Cycle in linked list by using Floyd cycle find algorithm
+
+
+public bool HasCycle(ListNode head) {
+        bool iscycle = false;
+        ListNode fast = new ListNode();
+        ListNode slow = new ListNode();
+        fast = slow = head;
+        if(head == null){
+            iscycle = false;
+        }
+        else if(head.next == null){
+            iscycle = false;
+        }
+        else{
+            while(fast != null && slow != null && fast.next != null){
+                slow = slow.next;
+                fast = fast.next;
+                fast = fast.next;
+                if(fast == slow){
+                    iscycle = true;
+                    break;
+                }
+            }
+        }
+        return iscycle;
+    }
