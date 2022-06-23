@@ -1,0 +1,43 @@
+class Tree
+	{
+		Node root = null;
+
+		public void Insert(int value)
+		{
+			Node node = new Node();
+			node.value = value;
+
+			if (root == null)
+			{
+				root = node;
+			}
+
+			else
+			{
+				Node current = root;
+				while (true)
+				{
+					if (value < current.value)
+					{
+						if (current.left == null)
+						{
+							current.left = node;
+							break;
+						}
+						current = current.left;
+					}
+
+					else
+					{
+						if (current.right == null)
+						{
+							current.right = node;
+							break;
+						}
+						current = current.right;
+					}
+
+				}
+			}
+		}
+}
