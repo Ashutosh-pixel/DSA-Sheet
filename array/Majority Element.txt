@@ -1,0 +1,50 @@
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+public class Solution {
+    public int MajorityElement(int[] nums) {
+        Array.Sort(nums);
+        return nums[nums.Length/2];
+    }
+}
+
+
+
+
+Repeat element finding
+
+
+public class Solution {
+    public int MajorityElement(int[] nums) {
+    
+        int Rc = 0;
+        int count = 0;
+        int no = nums[0];
+        int i = 0;
+        int j = 1;
+
+        Array.Sort(nums);
+        while (j<nums.Length)
+        {
+            if(nums[i] == nums[j]){
+                Rc++;
+                count = Math.Max(count,Rc);
+                if(Rc>=count){
+                    no = nums[i];
+                }
+                j++;
+            }
+            else{
+                i=j;
+                j++;
+                Rc=0;
+            }
+        }
+        
+        return no;
+	
+    }
+}
