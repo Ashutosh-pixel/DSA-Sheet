@@ -1,0 +1,49 @@
+class Program
+{
+
+    static void Main(string[] args){
+        int[] array = new int[]{1,0,6,-1,22,10,13};
+        sort(array,0,6);
+        foreach (var item in array)
+        {
+            System.Console.WriteLine(item);
+        }
+    }
+
+
+
+    static void sort(int[] array, int start, int end)
+    {
+        if (start >= end)
+        {
+            return;
+        }
+        var boundary = partition(array, start, end);
+        sort(array, start, boundary - 1);
+        sort(array, boundary + 1, end);
+    }
+
+    static int partition(int[] array, int start, int end)
+    {
+        var pivot = array[end];
+        var boundary = start - 1;
+        for (int i = start; i <= end; i++)
+        {
+            if (array[i] <= pivot)
+            {
+                boundary++;
+                if (array[i] >= pivot)
+                {
+                    var temp = array[i];
+                    array[i] = array[boundary];
+                    array[boundary] = temp;
+                }
+            }
+        }
+
+        return boundary;
+    }
+
+
+}
+
